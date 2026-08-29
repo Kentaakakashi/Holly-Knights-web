@@ -1,0 +1,6 @@
+{
+  "name": "Holly Knights",
+  "description": "The official website for the Holly Knights clan in Heroes Battleground.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

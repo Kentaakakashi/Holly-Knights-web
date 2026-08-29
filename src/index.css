@@ -1,0 +1,84 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Cinzel", serif;
+  --font-sans: "Lora", serif;
+  
+  --color-hk-gold: #f59e0b; /* amber-500 */
+  --color-hk-gold-dim: rgba(245, 158, 11, 0.3);
+  --color-hk-dark: #050505;
+  --color-hk-gray: #0A0A0A;
+  --color-hk-light: #E0E0E0;
+  --color-hk-red: #ef4444; /* red-500 */
+  
+  --animate-slow-spin: spin 20s linear infinite;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    background-color: var(--color-hk-dark);
+    color: var(--color-hk-light);
+    scroll-behavior: smooth;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+  }
+
+  ::selection {
+    background: var(--color-hk-gold);
+    color: var(--color-hk-dark);
+  }
+}
+
+.noise-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  pointer-events: none;
+  background: url('data:image/svg+xml;utf8,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)" opacity="0.04"/%3E%3C/svg%3E');
+}
+
+.text-glow {
+  text-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+}
+
+.text-glow-red {
+  text-shadow: 0 0 20px rgba(139, 0, 0, 0.6);
+}
+
+.box-glow {
+  box-shadow: 0 0 40px rgba(212, 175, 55, 0.1);
+}
+
+.border-gradient {
+  position: relative;
+}
+.border-gradient::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(to bottom right, var(--color-hk-gold), transparent, var(--color-hk-dark));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-hk-dark);
+}
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-hk-gold);
+}
